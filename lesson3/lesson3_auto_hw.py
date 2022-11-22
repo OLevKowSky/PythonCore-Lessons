@@ -123,3 +123,33 @@
 # print(cost_delivery(2, 1, 2, 3))
 
 # 10
+
+# def factorial(n):
+#     if n < 2:
+#         return 1
+#     else:
+#         return n * factorial(n - 1)
+
+
+# factorial(50)
+
+
+# def number_of_groups(n, k):
+#     count_list = int((factorial(n)) / ((factorial(n - k)) * (factorial(k))))
+#     return count_list
+
+
+# print(number_of_groups(50, 7))
+
+# 11
+
+def fibonacci(n):
+    if n <= 0:
+        return 0
+    elif n == 1 or n == 2:
+        return 1
+    else:
+        return fibonacci(n - 2) + fibonacci(n - 1)
+
+
+print(fibonacci(5))
