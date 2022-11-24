@@ -119,26 +119,62 @@
 #     (1, 3): 4.1,
 #     (2, 3): 3.9,
 # }
-# 
-# 
+#
+#
 # def calculate_distance(coordinates):
-# 
+#
 #     distance = 0
 #     i = 0
 #     list = []
 #     if len(coordinates) <= 1:
 #         return 0
-# 
+#
 #     for i in range(0, len(coordinates)-1):
 #         if coordinates[i] > coordinates[i+1]:
-#             coordinates[i], coordinates[i+1] = coordinates[i+1], coordinates[i]
-#         list.append((coordinates[i], coordinates[i+1]))
-#             
-#     for k, v in points.items():
-#         if k in list:
-#             distance += v
-#             i += 1
+#             list.append((coordinates[i+1], coordinates[i]))
+#         else:
+#             list.append((coordinates[i], coordinates[i+1]))
+#
+#     for k in list:
+#         distance += points.get(k)
 #     return distance
-# 
-# print(calculate_distance([0, 1, 3, 2, 0]))
+#
+#
+# print(calculate_distance([0, 1, 3, 2, 0, 2]))
 
+# 8
+
+# def game(terra, power):
+#
+#     get_power = power
+#     for t in terra:
+#         for p in t:
+#             if p <= get_power:
+#                 get_power += p
+#             else:
+#                 get_power += 0
+#                 break
+#     return get_power
+#
+#
+# print(game([[1, 2, 5, 10], [2, 10, 2], [1, 3, 1]], 1))
+
+# 9
+
+# def is_valid_pin_codes(pin_codes):
+#
+#     flag = False
+#     if len(pin_codes) == len(set(pin_codes)):
+#         for i in pin_codes:
+#             if i and len(i) == 4 and isinstance(i, str) and i.isnumeric():
+#                 flag = True
+#             else:
+#                 flag = False
+#         return flag
+#     else:
+#         return False
+#
+#
+# print(is_valid_pin_codes(['1101', '9034', '0011', '1101']))
+
+# 10

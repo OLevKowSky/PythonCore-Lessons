@@ -139,5 +139,10 @@
 # s_str = set("foo")
 # print("SET STR ", s_str)
 
-s2 = {4, "foo", None, True, (2, 3)}
-print("SET ", s2)
+# s2 = {4, "foo", None, True, (2, 3)}
+# print("SET ", s2)
+
+t = ("foo", "bar", "baz", "pass")
+
+# print(t[0])
+print(t[1:3])
