@@ -118,6 +118,7 @@
 # if __name__ == "__main__":
 #     parse_folder_recursion(p)
 
+
 def if_elif_vs_dict(operator, x, y):
     return {
         "+": lambda: x + y,
@@ -126,9 +127,9 @@ def if_elif_vs_dict(operator, x, y):
         "/": lambda: x / y,
     }.get(operator, lambda: "This is not valid operation")()
 
+
 operator = input("Please set the operator: ")
 x = float(input("Please set the x: "))
 y = float(input("Please set the y: "))
 a = if_elif_vs_dict(operator, x, y)
 print(a)
-
