@@ -1,0 +1,12 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.cfg
+src/add/__init__.py
+src/add/adding.py
+src/multiply/__init__.py
+src/multiply/multiplying.py
+src/our_project.egg-info/PKG-INFO
+src/our_project.egg-info/SOURCES.txt
+src/our_project.egg-info/dependency_links.txt
+src/our_project.egg-info/top_level.txt
