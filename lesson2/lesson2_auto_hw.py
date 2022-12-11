@@ -3,7 +3,7 @@
 # message = input("Введите сообщение: ")
 # offset = int(input("Введите сдвиг: "))
 # encoded_message = ""
-#
+
 # for ch in message:
 #     if ch == " ":
 #         new_char = " "
@@ -21,7 +21,7 @@
 #         pos = (pos + offset) % 26
 #         new_char = chr(pos + ord("a"))
 #         encoded_message += new_char
-#
+
 # print(f"Encoded message: {encoded_message}")
 
 # 14

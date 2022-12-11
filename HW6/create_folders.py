@@ -17,3 +17,21 @@ for i in CATEGORIES:
 
 if __name__ == "__main__":
     create_folders(path)
+
+
+
+
+# def create_folders(path):
+
+#     with open(path) as f:
+#         folders = f.readlines()
+#         result = {}
+#         for i in folders:
+#             result[i.split(":")[0]] = i.split(":")[1].split(",")
+#     return result
+
+# FOLDERS = create_folders("folders.txt")
+
+# for i in FOLDERS:
+#     if not path.joinpath(i).exists():
+#         path.joinpath(i).mkdir()

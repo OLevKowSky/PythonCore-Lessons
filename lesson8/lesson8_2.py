@@ -56,10 +56,103 @@
 #
 # print(animals)
 
-from collections import ChainMap
+# from collections import ChainMap
+#
+# first = {"fruit": "apple", "vegatable": "potato"}
+# second = {"color": "blue", "car": "volvo"}
+# third = {"name": "Alisa", "surname": "Simpson"}
+#
+# new_map = ChainMap(first, second, third)
+# # print(new_map)
+#
+# fourth = {"job": "developer"}
+#
+# new_map.new_child(fourth) # не спрацював
+# print("New ChainMap ", new_map)
 
-first = {"fruit": "apple", "vegatable": "potato"}
-second = {"color": "blue", "car": "volvo"}
-third = {"name": "Alisa", "surname": "Simpson"}
+# datetime, IANA
 
-new_map = ChainMap(first, second, third)
+# dateutil
+
+# from dateutil import tz
+# from datetime import datetime
+#
+# now = datetime.now(tz=tz.tzlocal())
+# print(now)
+# print("Name of time zone ", now.tzname())
+#
+# London_tz = tz.gettz("Europe/London")
+# now1 = datetime.now(tz=London_tz)
+# print(now1)
+# print("Name1 of time zone ", now1.tzname())
+
+# from dateutil import parser, tz
+# from datetime import datetime
+#
+# new_date = parser.parse("December 08, 2022 2:50 PM")
+# new_date = new_date.replace(tzinfo=tz.gettz("America/New_York"))
+# now = datetime.now(tz=tz.tzlocal())
+#
+# result = new_date - now
+#
+# print(f"Time US: {result}")
+
+# для HW8 1:20
+
+# from calendar import monthrange
+#
+# m = monthrange(2022, 12)
+# print(m)
+
+# from datetime import date
+#
+# a = (date(2022, 12, 1) - date(2022, 11, 1)).days
+# print(a)
+
+# timedelta
+
+# from datetime import datetime, timedelta
+#
+# now = datetime.now()
+# print(now)
+#
+# tomorrow = timedelta(days=+1)
+#
+# # print(now + tomorrow)
+#
+# delta = timedelta(days=+4, hours=-4)
+#
+# print(now + delta)
+
+# relativedelta
+
+# from datetime import datetime
+# from dateutil.relativedelta import relativedelta
+#
+# now = datetime.now()
+# print(now)
+#
+# delta = relativedelta(years=+3, month=+1, days=+4, hours=+2, minutes=-25)
+# print("Relative delta ", now + delta)
+
+# iso format
+
+from datetime import date
+from datetime import datetime
+
+date.fromisoformat("2022-12-08")
+a = datetime.date
+print(a)
+
+date_string = "12-07-2022 21:02:00"
+format_string = "%m-%d-%Y %H:%M:%S"
+
+a = datetime.strptime(date_string, format_string)
+print(a)
+
+# import dateparser
+#
+# a = dateparser.parse("yesterday")
+# b = dateparser.parse("morgen")
+# print(a)
+# print(b)

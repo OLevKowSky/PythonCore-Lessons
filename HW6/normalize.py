@@ -1,2 +1,2 @@
-def normalize(name):
+def normalize(name: str) -> str:
     return "name"

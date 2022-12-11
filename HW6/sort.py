@@ -41,3 +41,21 @@ def sort():
 
     if __name__ == "__main__":
         sort()
+
+
+
+
+# def sort(lst: list[Path]) -> str:
+#     for element in lst:
+#         if element.is_dir():
+#             if file.stat().st_size == 0:
+#                 file.rmdir()
+#         for suffix in CATEGORIES:
+#             if element.suffix in CATEGORIES[suffix]:
+#                 dir_img = path / suffix
+#                 dir_img.mkdir(exist_ok=True)
+#                 element.rename(dir_img.joinpath(element.name))
+    
+
+#     if __name__ == "__main__":
+#         sort(lst)
