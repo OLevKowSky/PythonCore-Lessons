@@ -32,8 +32,8 @@ read(path)
 # def delete_folder(path: Path) -> str:
 #     for element in lst:
 #         if element.is_dir():
-#             element.stat().st_size == 0:
-#             element.rmdir()
+#             if element.stat().st_size == 0:
+#                 element.rmdir()
 
 
 def sort_files(path: Path) -> str: # (lst: list[Pass]) з def read

@@ -72,26 +72,56 @@ def generate_world(game_map):
     return game_map, list(char_position)
 
 
-def move(direction, game_world, char_position):
+def move_up(game_world, char_position):
 
-    log(f"Moving {direction} from position {char_position}")
+    log(f"Moving up from position {char_position}")
 
     game_world[char_position[0]] [char_position[1]] = " "
-
-    if direction == "down":
-        char_position[0] += 1
-    elif direction == "up":
-        char_position[0] -= 1
-    elif direction == "left":
-        char_position[1] -= 1
-    elif direction == "right":
-        char_position[1] += 1
-
+    char_position[0] -= 1
     game_world[char_position[0]] [char_position[1]] = "X"
 
     log(f"New position {char_position}")
 
-    return game_world, char_position # char_position - не було
+    return game_world, char_position
+
+
+def move_down(game_world, char_position):
+
+    log(f"Moving down from position {char_position}")
+
+    game_world[char_position[0]] [char_position[1]] = " "
+    char_position[0] += 1
+    game_world[char_position[0]] [char_position[1]] = "X"
+
+    log(f"New position {char_position}")
+
+    return game_world, char_position
+
+
+def move_left(game_world, char_position):
+
+    log(f"Moving left from position {char_position}")
+
+    game_world[char_position[0]] [char_position[1]] = " "
+    char_position[1] -= 1
+    game_world[char_position[0]] [char_position[1]] = "X"
+
+    log(f"New position {char_position}")
+
+    return game_world, char_position
+
+
+def move_right(game_world, char_position):
+
+    log(f"Moving right from position {char_position}")
+
+    game_world[char_position[0]] [char_position[1]] = " "
+    char_position[1] += 1
+    game_world[char_position[0]] [char_position[1]] = "X"
+
+    log(f"New position {char_position}")
+
+    return game_world, char_position
 
 
 def save_game(game_world, char_position):
@@ -121,6 +151,7 @@ def load_game():
     return game_world, char_position
 
 
+move = {"up" : move_up, "down" : move_down, "left" : move_left, "right": move_right}
 game_map = generate_map(size_n, size_m)
 game_world, char = generate_world(game_map)
 print_map(game_world)
@@ -148,5 +179,5 @@ while True:
         log (f"Wrong direction. Try again")
         continue
 
-    game_world, char = move(direction, game_world, char)
+    game_world, char = move[direction](game_world, char)
     print_map(game_world)

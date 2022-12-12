@@ -7,8 +7,8 @@ path = Path(r"c:\folder")
 def read(path: Path) -> list[Path]:
     lst = []
     for element in path.glob("**/*"):
-        if element.is_file():
-            lst.append(element)
+        # if element.is_file():
+        lst.append(element)
 
     return lst # type = <class 'list'>
 
@@ -25,38 +25,42 @@ CATEGORIES = create_folders("dict.json")
 # for cat in CATEGORIES.values():
 #     print(type(cat)) # type = <class 'list'>
 
-for i in CATEGORIES:
-    if not path.joinpath(i).exists():
-        path.joinpath(i).mkdir()
+for cat in CATEGORIES:
+    if not path.joinpath(cat).exists():
+        path.joinpath(cat).mkdir()
 
-    # print(type(path.joinpath(i)))
+folders = []
+for cat in CATEGORIES:
+    folders.append(cat) # type <class 'list'>
+
+    
+    # target = path.joinpath(cat)
+    # print(target)
+    # print(type(target))
 
 
 def sort(lst):
 
     for element in lst:
-        # print(element) # type = <class 'pathlib.WindowsPath'>
-        for cat, suff in CATEGORIES.items():
-            if element.suffix in suff:
-                print(cat)
-                # path.joinpath(i).joinpath(element)
-#             # elif element.suffix in ('.avi', '.mp4', '.mov', '.mkv'):
-#             #     shutil.move(element, "video")
-#             # elif element.suffix in ('.doc', '.docx', '.txt', '.pdf', '.xlsx', 'pptx'):
-#             #     shutil.move(element, "documents")
-#             # elif element.suffix in ('.mp3', '.ogg', '.wav', '.amr'):
-#             #     shutil.move(element, "music")
-#             # elif element.suffix in ('.zip', '.gz', '.tar'):
-#             #     shutil.move(element, "archives")
-#             # else:
-#             #     element.rename(Path("else").joinpath(element.name))
+        if element.is_file():
+            for cat, suff in CATEGORIES.items():
+                if element.suffix in suff:
+                    try:
+                        element.rename(path.joinpath(cat).joinpath(element.name))
+                    except FileExistsError:
+                        element.unlink()
+      
 
 sort(read(path))
 
 
-# def sort(lst):
-    
-        # print(element)
+def delete_folder(lst):
+    for element in lst:
+        if element.is_dir():
+            if element.stat().st_size == 0:
+                if not element.name in folders:
+                        element.rmdir()
 
-# sort(lst)
+
+delete_folder(read(path))
     
