@@ -50,33 +50,18 @@ def sort(lst):
                         element.rename(path.joinpath(cat).joinpath(element.name))
                     except FileExistsError:
                         element.unlink()
-                # else:
-                #     try:
-                #         element.rename(path.joinpath("else").joinpath(element.name))
-                #     except FileExistsError:
-                #         element.unlink()
       
 
 sort(read(path))
 
 
-def delete_folder(path):
-
-    for element in path.iterdir():
+def delete_folder(lst):
+    for element in lst:
         if element.is_dir():
-            if not element.name in folders:
-                shutil.rmtree(element)
+            if element.stat().st_size == 0:
+                if not element.name in folders:
+                    element.rmdir()
 
 
-delete_folder(path)
-
-
-def unpack(path):
-
-    extract_dir = path.joinpath("archives")
-
-    for archive in extract_dir.iterdir():
-        shutil.unpack_archive(archive, extract_dir.joinpath(archive.stem))
-        archive.unlink()
-
-unpack(path)
+delete_folder(read(path))
+    
