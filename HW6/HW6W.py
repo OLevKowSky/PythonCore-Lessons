@@ -2,16 +2,26 @@ import json
 import sys
 import shutil
 from pathlib import Path
+from normalize import normalize
 
 path = Path(r"c:\folder")
 
 def read(path: Path) -> list[Path]:
     lst = []
     for element in path.glob("**/*"):
-        # if element.is_file():
+
+        name = element.name
+        new_element = normalize(name)
+
+        try:
+            element.rename(path.joinpath(path).joinpath(new_element))
+        except FileExistsError:
+            pass
+
         lst.append(element)
 
     return lst # type = <class 'list'>
+
 
 read(path)
 
@@ -78,5 +88,6 @@ def unpack(path):
     for archive in extract_dir.iterdir():
         shutil.unpack_archive(archive, extract_dir.joinpath(archive.stem))
         archive.unlink()
+
 
 unpack(path)

@@ -1,7 +1,6 @@
 import sys
 from pathlib import Path
-from sort import sort
-from suffix import suffix
+from HW6W import *
 
 try:
     path = Path(sys.argv[1])
@@ -9,8 +8,29 @@ try:
     def task():
 
         if path.exists():
-            suffix()
-            sort()
+
+            read(path)
+
+            def create_folders(path):
+                with open(path) as f:
+                    result = json.load(f)
+                return result
+
+            CATEGORIES = create_folders("dict.json")
+
+            for cat in CATEGORIES:
+                if not path.joinpath(cat).exists():
+                    path.joinpath(cat).mkdir()
+
+            folders = []
+            for cat in CATEGORIES:
+                folders.append(cat)
+
+          
+            sort(read(path))
+            delete_folder(path)
+            unpack(path)
+
         else:
             print(f"{path.absolute()} is not exist.")   
     
@@ -20,12 +40,3 @@ try:
 
 except IndexError:
     print("Path not found. Please, enter path.")
-
-
-
-# def task() -> str: # розташовувати функції в порядку їх виклику, або ланцюгово або в середині
-#     print(sort(Path(r"c:\folder"))) # Path(sys.argv[1])
-
-
-# if __name__ == "__main__":
-#     task()
