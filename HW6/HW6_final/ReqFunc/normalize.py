@@ -2,6 +2,7 @@ import re
 
 name = ""
 
+
 def normalize(name):
 
     upper_albet = {
@@ -95,4 +96,5 @@ def normalize(name):
     return name
 
 
-normalize(name)
+if __name__ == "__main__":
+    normalize(name)

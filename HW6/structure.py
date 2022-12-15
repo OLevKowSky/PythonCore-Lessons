@@ -35,17 +35,6 @@ read(path)
 #             if element.stat().st_size == 0:
 #                 element.rmdir()
 
-# def delete_folder(lst):
-#
-#     for element in lst:
-#         if element.is_dir():
-#             if element.stat().st_size == 0:
-#                 if not element.name in folders:
-#                     element.unlink()
-#
-#
-# delete_folder(read(path))
-
 
 def sort_files(path: Path) -> str: # (lst: list[Pass]) з def read
     path.rename(rename_file(path.name))

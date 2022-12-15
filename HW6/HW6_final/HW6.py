@@ -1,15 +1,13 @@
 import sys
 from pathlib import Path
-from HW6W import *
+from ReqFunc.ReqFunc import *
 
 try:
     path = Path(sys.argv[1])
 
     def task():
 
-        if path.exists():
-
-            read(path)
+        if path.exists():          
 
             def create_folders(path):
                 with open(path) as f:
@@ -23,13 +21,17 @@ try:
                     path.joinpath(cat).mkdir()
 
             folders = []
+            
             for cat in CATEGORIES:
                 folders.append(cat)
 
-          
+
+            rename(path)
+            read(path)
             sort(read(path))
             delete_folder(path)
             unpack(path)
+            suffix(path)
 
         else:
             print(f"{path.absolute()} is not exist.")   

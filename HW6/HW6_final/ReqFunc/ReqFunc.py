@@ -1,34 +1,29 @@
 import json
-import sys
 import shutil
+import sys
 from pathlib import Path
-from normalize import normalize
+from ReqFunc.normalize import normalize
 
 path = Path(r"c:\folder")
 
 
 def create_folders(path):
+
     with open(path) as f:
         result = json.load(f)
+
     return result
 
 CATEGORIES = create_folders("dict.json")
-
-# for cat in CATEGORIES.values():
-#     print(type(cat)) # type = <class 'list'>
 
 for cat in CATEGORIES:
     if not path.joinpath(cat).exists():
         path.joinpath(cat).mkdir()
 
 folders = []
-for cat in CATEGORIES:
-    folders.append(cat) # type <class 'list'>
 
-    
-    # target = path.joinpath(cat)
-    # print(target)
-    # print(type(target))
+for cat in CATEGORIES:
+    folders.append(cat)
 
 
 def rename(path):
@@ -42,19 +37,23 @@ def rename(path):
         except FileExistsError:
             pass
 
-rename(path)
+
+if __name__ == "__main__":
+    rename(path)
 
 
 def read(path: Path) -> list[Path]:
 
     lst = []
+
     for element in path.glob("**/*"):
         lst.append(element)
         
-    return lst # type = <class 'list'>
+    return lst
 
 
-read(path)
+if __name__ == "__main__":
+    read(path)
 
 
 def sort(lst):
@@ -69,16 +68,17 @@ def sort(lst):
                         name = element.stem
                         new_name = str(name) + ("_copy") + element.suffix
                         element.rename(path.joinpath(cat).joinpath(new_name))
-                else:
-                    try:
-                        element.rename(path.joinpath("else").joinpath(element.name))
-                    except FileExistsError:
-                        name = element.stem
-                        new_name = str(name) + ("_copy") + element.suffix
-                        element.rename(path.joinpath("else").joinpath(new_name))
+                # else:
+                #     try:
+                #         element.rename(path.joinpath("else").joinpath(element.name))
+                #     except FileExistsError:
+                #         name = element.stem
+                #         new_name = str(name) + ("_copy") + element.suffix
+                #         element.rename(path.joinpath("else").joinpath(new_name))
       
 
-sort(read(path))
+if __name__ == "__main__":
+    sort(read(path))
 
 
 def delete_folder(path):
@@ -89,7 +89,8 @@ def delete_folder(path):
                 shutil.rmtree(element)
 
 
-delete_folder(path)
+if __name__ == "__main__":
+    delete_folder(path)
 
 
 def unpack(path):
@@ -101,7 +102,8 @@ def unpack(path):
         archive.unlink()
 
 
-unpack(path)
+if __name__ == "__main__":
+    unpack(path)
 
 
 def suffix(path):
@@ -131,4 +133,5 @@ def suffix(path):
     print(f"Unknown suffix: {unkn_suffix}")
 
 
-suffix(path)
+if __name__ == "__main__":
+    suffix(path)
