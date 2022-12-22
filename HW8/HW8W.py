@@ -1,5 +1,5 @@
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def read_DB(): # читає базу данних з текстового файлу
 
@@ -61,8 +61,8 @@ this_year_BD()
 
 def compare(): # чи попадає дата народження в діапазон
     this_bday_lst = this_year_bday()
-    week_begin = datetime(year=2022, month=12, day=28)
-    week_end = datetime(year=2022, month=12, day=30)
+    week_begin = datetime.now() + timedelta(weeks=1)
+    week_end = datetime.now() + timedelta(weeks=2)
     suit_bday_lst = []
     # print(type(week_begin))
 
