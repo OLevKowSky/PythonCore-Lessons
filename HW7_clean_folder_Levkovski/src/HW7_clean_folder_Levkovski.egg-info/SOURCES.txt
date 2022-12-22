@@ -1,0 +1,13 @@
+LICENSE.txt
+README.md
+setup.cfg
+setup.py
+src/HW6.py
+src/ReqFunc.py
+src/dict.json
+src/normalize.py
+src/HW7_clean_folder_Levkovski.egg-info/PKG-INFO
+src/HW7_clean_folder_Levkovski.egg-info/SOURCES.txt
+src/HW7_clean_folder_Levkovski.egg-info/dependency_links.txt
+src/HW7_clean_folder_Levkovski.egg-info/entry_points.txt
+src/HW7_clean_folder_Levkovski.egg-info/top_level.txt
