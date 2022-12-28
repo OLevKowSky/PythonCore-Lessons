@@ -1,0 +1,13 @@
+{"name" : "Maksym Bogush", "birthday" : "1978/12/26"}
+{"name" : "Olena Marchenko", "birthday" : "1983/12/26"}
+{"name" : "Dmytro Yashchenko", "birthday" : "1991/12/27"}
+{"name" : "Roman Demchenko", "birthday" : "1984/12/27"}
+{"name" : "Anna Metiolkina", "birthday" : "1986/12/28"}
+{"name" : "Vasyl Kizlenko", "birthday" : "1987/12/28"}
+{"name" : "Oleksii Koptilyi", "birthday" : "1989/12/29"}
+{"name" : "Kateryna Chernykh", "birthday" : "1980/12/29"}
+{"name" : "Alina Omelchenko", "birthday" : "1993/12/30"}
+{"name" : "Yuliia Vasylyshyna", "birthday" : "1995/12/30"}
+{"name" : "Svitlana Kolisnyk", "birthday" : "1990/12/31"}
+{"name" : "Oleksii Vysokos", "birthday" : "1995/12/31"}
+{"name" : "Nataliia Ishchenko", "birthday" : "1991/01/01"}

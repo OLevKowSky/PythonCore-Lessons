@@ -1,5 +1,5 @@
 
-from datetime import datetime, timedelta
+from datetime import datetime
 
 def read_DB(): # читає базу данних з текстового файлу
 
@@ -61,8 +61,8 @@ this_year_BD()
 
 def compare(): # чи попадає дата народження в діапазон
     this_bday_lst = this_year_bday()
-    week_begin = datetime.now() + timedelta(weeks=1)
-    week_end = datetime.now() + timedelta(weeks=2)
+    week_begin = datetime(year=2022, month=12, day=28)
+    week_end = datetime(year=2022, month=12, day=30)
     suit_bday_lst = []
     # print(type(week_begin))
 
@@ -84,9 +84,8 @@ compare()
 def name():
 
     suit_bday_lst = compare()
-    # print(type(suit_bday_lst))
     employees = this_year_BD()
-    # print(type(employees))
+
     monday = []
     tuesday = []
     wednesday = []
@@ -99,7 +98,6 @@ def name():
     for bday in suit_bday_lst:
 
         bday = bday.strftime("%Y/%m/%d")
-        # print(type(bday))
         
         for employee in employees:
 
@@ -139,3 +137,63 @@ def name():
 
 
 name()
+
+
+
+
+
+# from datetime import datetime, timedelta
+
+# def read_DB(): # читає базу данних з текстового файлу
+
+#     with open("employees.txt") as file:
+        
+#         employees = []
+#         lines = file.readlines()
+        
+#         for employee in lines:
+#             employees.append(eval(employee)) 
+
+#         return employees # повертає список словників з днями народження
+
+
+# read_DB()
+
+
+# employees = read_DB()
+# current_date = datetime.now().date()
+# start_period = current_date
+# end_period = start_period + timedelta(weeks=1)
+
+
+# def get_str_period(start_period: datetime, end_period: datetime) -> list[str]:
+#     delta = end_period - start_period  # as timedelta
+#     days = [start_period + timedelta(days=i) for i in range(delta.days + 1)]
+#     return days # [d.strftime("%Y/%m/%d") for d in days]
+
+# get_str_period(start_period, end_period)
+
+
+# this_year_BD = {}
+
+# period_BD = get_str_period(start_period, end_period)
+
+# for employee in employees:
+#     employee_BD = datetime.strptime(employee["birthday"], "%Y/%m/%d").date()
+#     cur_year_BD = employee_BD.replace(year=current_date.year)
+
+#     if not this_year_BD.get(cur_year_BD):
+#         this_year_BD[cur_year_BD] = [employee["name"]]
+#     else:
+#         this_year_BD[cur_year_BD].append(employee["name"])
+
+# for k, v in this_year_BD.items():
+#     if k in period_BD:
+#         if k.weekday() == 5:
+#             k = k + timedelta(days=2)
+#             print(f'{k.strftime("%A")}: {", ".join(v)}')
+#         elif k.weekday() == 6:
+#             k = k + timedelta(days=1)
+#             print(f'{k.strftime("%A")}: {", ".join(v)}')
+#         else:
+#             print(f'{k.strftime("%A")}: {", ".join(v)}')
