@@ -17,7 +17,7 @@ size_m = 10
 def log(action):
 
     current_time = datetime.strftime(datetime.now(), "%H:%M:%S")
-    message = f"[{current_time}] (action)"
+    message = f"[{current_time}] {action}"
 
     print(message)
     with open("logs.txt", "a") as file:

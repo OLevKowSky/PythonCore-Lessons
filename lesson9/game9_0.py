@@ -7,17 +7,17 @@
 
 from datetime import datetime
 import json
-from random import randint
+from random import randint, choice
 
 
-size_n = 10
-size_m = 10
+size_n = 20
+size_m = 20
 
 
 def log(action):
 
     current_time = datetime.strftime(datetime.now(), "%H:%M:%S")
-    message = f"[{current_time}] (action)"
+    message = f"[{current_time}] {action}"
 
     print(message)
     with open("logs.txt", "a") as file:
@@ -52,6 +52,7 @@ def generate_world(game_map):
     objs = {"X": 1, "O": 3, "&": 3, "_": 3}
     size_n, size_m = len(game_map), len(game_map[0])
     rnd_cells = []
+    enemies = []
 
     for obj, n in objs.items():
         for i in range(n):
@@ -64,62 +65,64 @@ def generate_world(game_map):
 
             if obj == "X":
                 char_position = rnd_cell
+            elif obj == "&":
+                enemies.append(list(rnd_cell))
 
             game_map[rnd_cell[0]][rnd_cell[1]] = obj
 
     log(f"World has been generated")
 
-    return game_map, list(char_position)
+    return game_map, list(char_position), enemies
 
 
 def log_move(move):
 
-    def wrapper(game_world, char_position):
+    def wrapper(game_world, char_position, obj_type):
 
-        log(f"Current position {char_position}")
-        game_world, char_position = move(game_world, char_position)
-        log(f"New position {char_position}")
+        log(f"{obj_type} Current position {char_position}")
+        game_world, char_position = move(game_world, char_position, obj_type)
+        log(f"{obj_type} New position {char_position}")
 
         return game_world, char_position
 
     return wrapper
 
 @log_move
-def move_up(game_world, char_position):
+def move_up(game_world, char_position, obj_type):
 
     game_world[char_position[0]] [char_position[1]] = " "
     char_position[0] -= 1
-    game_world[char_position[0]] [char_position[1]] = "X"
+    game_world[char_position[0]] [char_position[1]] = obj_type
 
     return game_world, char_position
 
 
 @log_move
-def move_down(game_world, char_position):
+def move_down(game_world, char_position, obj_type):
 
     game_world[char_position[0]] [char_position[1]] = " "
     char_position[0] += 1
-    game_world[char_position[0]] [char_position[1]] = "X"
+    game_world[char_position[0]] [char_position[1]] = obj_type
 
     return game_world, char_position
 
 
 @log_move
-def move_left(game_world, char_position):
+def move_left(game_world, char_position, obj_type):
 
     game_world[char_position[0]] [char_position[1]] = " "
     char_position[1] -= 1
-    game_world[char_position[0]] [char_position[1]] = "X"
+    game_world[char_position[0]] [char_position[1]] = obj_type
 
     return game_world, char_position
 
 
 @log_move
-def move_right(game_world, char_position):
+def move_right(game_world, char_position, obj_type):
 
     game_world[char_position[0]] [char_position[1]] = " "
     char_position[1] += 1
-    game_world[char_position[0]] [char_position[1]] = "X"
+    game_world[char_position[0]] [char_position[1]] = obj_type
 
     return game_world, char_position
 
@@ -160,8 +163,18 @@ def move(direction):
     return directions[direction]
 
 
+def move_enemy(enemies, game_world):
+    enemy_to_move_index = randint(0, len(enemies) - 1)
+    enemy_to_move = enemies[enemy_to_move_index]
+    direction_to_move = choice(list(directions.keys()))
+    game_world, position = move(direction_to_move)(game_world, enemy_to_move, "&")
+    enemy_to_move = position
+
+    return game_world, enemies
+
+
 game_map = generate_map(size_n, size_m)
-game_world, char = generate_world(game_map)
+game_world, char, enemies = generate_world(game_map)
 print_map(game_world)
 
 while True:
@@ -187,5 +200,9 @@ while True:
         log (f"Wrong direction. Try again")
         continue
 
-    game_world, char = move(direction)(game_world, char)
+    game_world, char = move(direction)(game_world, char, "X")
+    print_map(game_world)
+
+    print("Enemies turn...")
+    game_world, enemies = move_enemy(enemies, game_world)
     print_map(game_world)
