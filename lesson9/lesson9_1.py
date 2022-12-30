@@ -1,6 +1,6 @@
 """lesson 9_1 Closure, Decorators, Lambda, Iter/Gen"""
 
-# Closure
+## Closure
 
 # age = 25
 #
@@ -41,7 +41,7 @@
 # print(u)
 
 
-# Decorators
+## Decorators
 
 # def my_decorator(func):
 #     def wrapper():
@@ -88,7 +88,7 @@
 # func_some_time(1000)
 
 
-# LAMBDA
+## LAMBDA
 
 # def hello(name):
 #     return name
@@ -134,7 +134,7 @@
 # print((trace(lambda x: x ** 2))(5))
 
 
-# Iterators
+## Iterators
 
 # iter_obj = iter([3, 4, 5]) # 3
 # print(iter_obj)
@@ -163,16 +163,16 @@
 # print(next(iter_tuple))
 # print(next(iter_tuple))
 
-iter_obj = iter(("alisa"))
-print(type(iter_obj))
-print(next(iter_obj))
-print(next(iter_obj))
-print(next(iter_obj))
-print(next(iter_obj))
-print(next(iter_obj))
+# iter_obj = iter(("alisa"))
+# print(type(iter_obj))
+# print(next(iter_obj))
+# print(next(iter_obj))
+# print(next(iter_obj))
+# print(next(iter_obj))
+# print(next(iter_obj))
 
 
-# Generators
+## Generators
 
 def even(x):
     while (x!=0):

@@ -53,7 +53,7 @@
 # print(power_ten(4))
 
 
-# def power(n, y, z): # вкліденність може бути подвійною і більше
+# def power(n, y, z): # вкладенність може бути подвійною і більше
 #
 #     def enclosed(x, q, t):
 #         return x ** n * y * z
